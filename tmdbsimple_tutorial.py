@@ -13,10 +13,13 @@ print(response)
 
 from urllib.request import urlopen
 
+#web_url = "https://image.tmdb.org/t/p/original"
+#image_path = web_url + response['poster_path']
+
 image_path = "https://image.tmdb.org/t/p/original/ujr5pztc1oitbe7ViMUOilFaJ7s.jpg"
 image = urlopen(image_path).read()
 
-print(image[0:100])
+print(image[0:100])  #a kép első 100 karaktere
 
 with open('test.jpg', "wb") as poster:
     poster.write(image)
