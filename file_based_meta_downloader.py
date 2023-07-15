@@ -1,10 +1,14 @@
+import tmdbsimple as tmdb
+
 from meta_service.api_service import ApiService
 from meta_service.file_service import FileService
 from meta_service.config import MOVIES_PATH
+
 def download_meta():
     file = FileService()
-    api = ApiService()
+    api = ApiService(tmdb.Search())
     movies = file.get_data_from_folder(MOVIES_PATH)
+
     for item in movies:
         movie = api.get_meta_data(item)
         json_path = f"{file.meta_folder}/{item}.json"

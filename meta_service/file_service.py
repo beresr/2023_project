@@ -4,7 +4,7 @@ import os
 
 class FileService:
     #folder_path = r"D:\Rita\Python\project\movies"
-    meta_folder='meta_daata'
+    meta_folder='meta_data'
     poster_folder='posters'
 
     def __init__(self):
