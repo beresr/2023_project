@@ -31,6 +31,7 @@ if __name__ == '__main__':
         if not movie.get('poster_path'):
             print(f'Nincs poster_path: {item}')
             continue
+        url = api.get_image_url(movie['poster_path'])
 
         api.get_image_url(movie['poster_path'])
         print(url)
