@@ -24,11 +24,9 @@ def download_meta():
         file.remove_file(json_path)
         file.remove_file(image_path)
 
-    print(need_to_delete)
-    print(need_to_download)
-    exit()
     
-    for item in movies:
+    
+    for item in need_to_download:
         movie = api.get_meta_data(item)
         json_path = f"{file.meta_folder}/{item}.json"
         file.write_json_data(data=movie, json_path=json_path)
