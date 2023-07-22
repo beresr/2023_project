@@ -8,7 +8,26 @@ def download_meta():
     file = FileService()
     api = ApiService(tmdb.Search())
     movies = file.get_data_from_folder(MOVIES_PATH)
+    meta=file.get_data_from_folder(file.meta_folder)
+    #print(meta)
+    #print(movies)
 
+    need_to_delete = [item for item in meta if item not in movies]
+#for item in meta:
+    #if item not in movies:
+        #need_to_delete.append(item)
+    need_to_download = [item for item in movies if item not in meta]
+
+    for item in need_to_delete:
+        json_path = f"{file.meta_folder}/{item}.json"
+        image_path = f"{file.poster_folder}/{item}.jpg"
+        file.remove_file(json_path)
+        file.remove_file(image_path)
+
+    print(need_to_delete)
+    print(need_to_download)
+    exit()
+    
     for item in movies:
         movie = api.get_meta_data(item)
         json_path = f"{file.meta_folder}/{item}.json"
